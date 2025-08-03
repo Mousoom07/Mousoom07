@@ -5,10 +5,6 @@
 📫 With a unique blend of technical expertise, artistic talent, and educational passion<br/>
 ✍🏻 Passion for Artificial Intelligence drives my research in the AI space<br/>
 
-# 💫 About Me:
-🔭 I’m currently working on<br>👯 I’m looking to collaborate on<br>🤝 I’m looking for help with<br>🌱 I’m currently learning<br>💬 Ask me about<br>⚡ Fun fact
-
-
 ## 🌐 Socials:
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/www.linkedin.com/in/mousoom-samanta-bb4b15348) [![email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:mousoomsamanta07@gmail.com) 
 
