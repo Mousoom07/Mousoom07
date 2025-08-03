@@ -4,8 +4,6 @@
 📚 I’m currently working on my Unreal Engine Skills<br/>
 📫 With a unique blend of technical expertise, artistic talent, and educational passion<br/>
 ✍🏻 Passion for Artificial Intelligence drives my research in the AI space<br/>
-# 💫 About Me:
-🔭 I’m currently working on<br>👯 I’m looking to collaborate on<br>🤝 I’m looking for help with<br>🌱 I’m currently learning<br>💬 Ask me about<br>⚡ Fun fact
 
 
 ## 🌐 Socials:
