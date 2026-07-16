@@ -1,0 +1,22 @@
+# GitHub Profile Repository
+/Mousoom07/
+
+# Editor
+.vscode/
+.claude/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.venv/
+venv/
+
+# Generated Files
+source-prepped.png
+
+# OS Files
+.DS_Store
+Thumbs.db
