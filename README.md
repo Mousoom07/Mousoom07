@@ -1,4 +1,4 @@
-# Mousoom07 GitHub Profile
+# Mousoom Samanta GitHub Profile
 
 Build a clean, monochrome **animated GitHub profile**: an ASCII portrait that
 types itself in like a terminal, a neofetch-style info panel, and a live
