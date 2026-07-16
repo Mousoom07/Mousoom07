@@ -1,124 +1,89 @@
+# ascii-profile-kit
+
+Build a clean, monochrome **animated GitHub profile**: an ASCII portrait that
+types itself in like a terminal, a neofetch-style info panel, and a live
+contribution graph that refreshes daily on its own — no paid services, no
+tokens, no broken images.
+
+This is my personal build (**Mithun Gowda B**), wired end to end. Fork it, swap
+in your photo and details, and ship your own.
+
 <div align="center">
 
-# 👋 Hi, I'm Mousoom Samanta
+<table>
+<tr>
+<td valign="top"><img src="./avi-ascii.svg" width="370" alt="ASCII portrait" /></td>
+<td valign="top"><img src="./info-card.svg" width="490" alt="Experience, stack, highlights" /></td>
+</tr>
+</table>
 
-### AI Engineer • Software Developer • ML Researcher
-
-<p>
-  <a href="https://mousoom-samanta.vercel.app">
-    <img src="https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=white" />
-  </a>
-
-  <a href="https://www.linkedin.com/in/mousoom-samanta-bb4b15348/">
-    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
-  </a>
-
-  <a href="mailto:mousoomsamanta07@gmail.com">
-    <img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" />
-  </a>
-
-  <a href="https://leetcode.com/u/Mousoom07/">
-    <img src="https://img.shields.io/badge/LeetCode-FFA116?style=for-the-badge&logo=leetcode&logoColor=white" />
-  </a>
-</p>
-
-<img src="./dark.svg" width="100%" alt="Animated Banner"/>
+<img src="./contrib-heatmap.svg" width="860" alt="GitHub contribution graph" />
 
 </div>
 
 ---
 
-# 🚀 About Me
+## How it works
 
-- 🎓 B.Tech in Computer Science & Engineering
-- 🤖 AI Engineer
-- 💻 Full Stack Software Developer
-- 🧠 Machine Learning Researcher
-- 🌱 Open Source Contributor
-- 🚀 Passionate about building impactful AI products
+GitHub strips `<script>` from READMEs, but it DOES run **SMIL and CSS animations
+inside an SVG** loaded as an `<img>`. So all the motion lives inside self-hosted
+SVGs in the repo — nothing ever 404s or gets rate-limited.
 
----
+Two things make the portrait look *clean* instead of noisy:
+1. **Monochrome** — one light-gray color, never per-character rainbow.
+2. **Background removed + local contrast (CLAHE)** — so the subject sits on blank
+   space and the face has real highlights/shadows instead of being a dark blob.
 
-# 💼 Experience
+## What's inside
 
-- IIT Kharagpur — GRISHMA Summer Project Intern
-- Infosys Springboard — Software Engineering Trainee
-- Google Summer of Code — Open Source Contributor
-- Atharvo India — Machine Learning Intern
+```
+PROMPT.md                    a paste-into-Claude-Code prompt that drives it all
+profile-README-template.md   the README that goes on your profile
+requirements-local.txt       deps for the one-time local image prep
+scripts/
+  prep_photo.py              rembg background removal + CLAHE contrast (run once)
+  make_ascii_svg.py          photo  -> typing monochrome ASCII portrait
+  make_info_card.py          your experience/stack -> neofetch info panel  <- EDIT
+  fetch_contributions.py     scrapes your real contributions (no auth)
+  render_heatmap_svg.py      contributions -> animated box graph
+  requirements.txt           deps the daily workflow needs
+.github/workflows/
+  update-profile-art.yml     refreshes the graph every day, automatically
+```
 
----
+## Quickstart
 
-# 🚀 Featured Projects
+```bash
+# 0. deps
+pip install -r requirements-local.txt        # local prep
+pip install -r scripts/requirements.txt      # scraper
 
-- 🧠 BODH-I
-- 🍔 FoodOrder AI
-- 🎯 PrepGrid
-- 📦 Smart Inventory Management
-- 🩺 Mano Veda
-- 💼 Rancho's Platform
+# 1. portrait  (STATIC=1 shows the final frame; drop it for the animated file)
+python scripts/prep_photo.py path/to/your-photo.jpg source-prepped.png
+python scripts/make_ascii_svg.py              # -> avi-ascii.svg
 
----
+# 2. info panel  (edit the ROWS + HOST at the top of the script first)
+python scripts/make_info_card.py              # -> info-card.svg
 
-# 💻 Tech Stack
+# 3. contribution graph
+GH_PROFILE_USER=YOUR_USERNAME python scripts/fetch_contributions.py
+python scripts/render_heatmap_svg.py          # -> contrib-heatmap.svg
 
-### Languages
+# 4. README
+cp profile-README-template.md README.md       # then fill in name / tagline / links
+```
 
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![Java](https://img.shields.io/badge/Java-red?style=flat-square&logo=openjdk)
-![C++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=cplusplus)
-![JavaScript](https://img.shields.io/badge/JavaScript-yellow?style=flat-square&logo=javascript)
+Create a **public repo named exactly your GitHub username**, drop in the three
+SVGs, `README.md`, the `scripts/` folder, `data/contributions.json`, and
+`.github/`, then push. Set **Settings → Actions → General → Workflow permissions
+→ Read and write** and run the workflow once so the graph appears immediately.
+After that it updates itself daily.
 
-### Frameworks
+## Tuning cheatsheet
 
-![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react)
-![NextJS](https://img.shields.io/badge/Next.js-black?style=flat-square&logo=nextdotjs)
-![NodeJS](https://img.shields.io/badge/Node.js-green?style=flat-square&logo=node.js)
-![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi)
-
-### AI / ML
-
-TensorFlow • PyTorch • OpenCV • Scikit-Learn
-
-### Database
-
-MongoDB • MySQL
-
-### Tools
-
-Git • GitHub • Docker • Linux
-
----
-
-# 📊 GitHub Analytics
-
-<p align="center">
-
-<img height="170" src="https://github-readme-stats.vercel.app/api?username=Mousoom07&show_icons=true&theme=github_dark"/>
-
-<img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Mousoom07&layout=compact&theme=github_dark"/>
-
-</p>
-
----
-
-# 🔥 GitHub Streak
-
-<p align="center">
-
-<img src="https://streak-stats.demolab.com?user=Mousoom07&theme=github-dark"/>
-
-</p>
-
----
-
-# 📈 Contributions
-
-<img src="./contrib-heatmap.svg" width="100%"/>
-
----
-
-<div align="center">
-
-### ⭐ Thanks for visiting ⭐
-
-</div>
+| Want to…                    | Where |
+| --------------------------- | ----- |
+| Punchier / lighter face     | `CONTRAST`, `GAMMA`, `WHITE_FLOOR` in `make_ascii_svg.py`; `clipLimit` in `prep_photo.py` |
+| Type faster / slower        | `ROW_DUR`, `STAGGER` in `make_ascii_svg.py` |
+| Change experience / stack   | `ROWS` and `HOST` in `make_info_card.py` |
+| Info panel too tall         | bump `H` in `make_info_card.py`, then re-match `width=` in the README |
